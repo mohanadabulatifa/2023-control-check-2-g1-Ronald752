@@ -88,6 +88,15 @@ INSERT INTO Disease(id, name, description, severity)
                 (2,'Neutered','Oh no! Oh no! Oh no no no no no!',4),
                 (3,'Flu','Well, you know...',3);
 
+INSERT INTO Symptom(id, name, description)
+        VALUES (1,'Cough', null),
+                (2,'Hair loss','Hair loss in animals, also known as alopecia, can be a common and concerning symptom with various potential underlying causes.');
+
+INSERT INTO Treatment(id, name, description, dose)
+        VALUES (1,'aspirin','Aspirin, also known by its generic name acetylsalicylic acid, is a widely used medication with analgesic (pain-relieving), antipyretic (fever-reducing), and anti-inflammatory properties.', 12),
+                (2,'paracetamol','Paracetamol, known as acetaminophen in the United States and Canada, is a widely used over-the-counter (OTC) medication with analgesic (pain-relieving) and antipyretic (fever-reducing) properties.',20);
+
+
 INSERT INTO disease_susceptible_pet_types(disease_id,susceptible_pet_types_id) VALUES (1,1),(1,2),(2,6),(3,6);
 
 INSERT INTO visits(id,pet_id,visit_date_time,description,vet_id,diagnose_id) 
