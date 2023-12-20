@@ -29,11 +29,15 @@ import org.springframework.samples.petclinic.vet.Vet;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.persistence.UniqueConstraint;
+import jakarta.persistence.JoinTable;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -65,7 +69,8 @@ public class Visit extends BaseEntity {
 	@ManyToOne
 	Disease diagnose;
 	
-	@Transient
+    @ManyToMany(fetch = FetchType.EAGER)
+	//@JoinTable(name = "vis_sym", joinColumns=@JoinColumn(name="visit_id"), inverseJoinColumns=@JoinColumn(name="symptom_id"), uniqueConstraints={ @UniqueConstraint(columnNames ={"visit_id","symptom_id"} )})
 	Set<Symptom> symptoms;
 
 	
