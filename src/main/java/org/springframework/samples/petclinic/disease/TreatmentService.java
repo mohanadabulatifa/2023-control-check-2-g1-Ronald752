@@ -1,7 +1,11 @@
 package org.springframework.samples.petclinic.disease;
 
 import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class TreatmentService {
     private TreatmentRepository repo;
 
@@ -9,11 +13,13 @@ public class TreatmentService {
         this.repo=tr;
     }
 
+    @Transactional(readOnly = true)
     public List<Treatment> getAll() {
-        return null;
+        return repo.findAll();
     }
 
+    @Transactional
     public Treatment save(Treatment t) {
-        return null;
+        return repo.save(t);
     }
 }
