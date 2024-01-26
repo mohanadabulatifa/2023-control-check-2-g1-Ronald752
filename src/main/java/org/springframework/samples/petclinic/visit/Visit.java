@@ -29,11 +29,16 @@ import org.springframework.samples.petclinic.vet.Vet;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -65,7 +70,8 @@ public class Visit extends BaseEntity {
 	@ManyToOne
 	Disease diagnose;
 	
-	@Transient
+    @ManyToMany(fetch = FetchType.EAGER)
+
 	Set<Symptom> symptoms;
 
 	

@@ -83,10 +83,33 @@ INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (11, 'Freddy', '201
 INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (12, 'Lucky', '2010-06-24', 2, 10);
 INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (13, 'Sly', '2012-06-08', 1, 10);
 
+
 INSERT INTO Disease(id, name, description, severity) 
         VALUES (1,'Rabies Shot','You dont wanna know...',5),
                 (2,'Neutered','Oh no! Oh no! Oh no no no no no!',4),
                 (3,'Flu','Well, you know...',3);
+
+
+INSERT INTO Symptom(id, name, description)
+        VALUES (1,'Cough', null),
+                (2,'Hair loss','Hair loss in animals, also known as alopecia, can be a common and concerning symptom with various potential underlying causes.');
+
+INSERT INTO Symptom_excludes(excludes_id, symptom_id)
+        VALUES (1,1),
+                (2,2);
+
+INSERT INTO Symptom_includes(includes_id, symptom_id)
+        VALUES (2,1),
+                (3,1),
+                (1,2),
+                (3,2);
+INSERT INTO Treatment(id,name,description , dose) VALUES (1 ,  'aspirin' ,'Aspirin, also known by its generic name acetylsalicylic acid, is a widely used medication with analgesic (pain-relieving), antipyretic (fever-reducing), and anti-inflammatory properties.',12);
+INSERT INTO Treatment(id,name,description , dose) VALUES (2 ,  'paracetamol' ,'Paracetamol, known as acetaminophen in the United States and Canada, is a widely used over-the-counter (OTC) medication with analgesic (pain-relieving) and antipyretic (fever-reducing) properties.',20);
+
+
+INSERT INTO Treatment_recommended_for(recommended_for_id, treatment_id)
+        VALUES (2,1),
+                (1,2);
 
 INSERT INTO disease_susceptible_pet_types(disease_id,susceptible_pet_types_id) VALUES (1,1),(1,2),(2,6),(3,6);
 
@@ -98,7 +121,13 @@ INSERT INTO visits(id,pet_id,visit_date_time,description,vet_id,diagnose_id)
                     (5, 10, '2023-11-29 13:00', 'rabies shot', 1,1),
                     (6, 12, '2023-12-05 15:30', 'Flu', 1,3),
                     (7, 12, '2023-12-10 15:30', 'rabies shot', 1,1);
-                                                                                                                                                    
+
+
+INSERT INTO visits_symptoms(symptoms_id, visit_id) 
+                VALUES (1,1),
+                        (2,1); 
+
+
 INSERT INTO consultations(id,title, is_clinic_comment,status,owner_id,pet_id,creation_date) VALUES (1, 'Consultation about vaccines', 0, 'ANSWERED', 1, 1, '2023-01-04 17:30');
 INSERT INTO consultations(id,title, is_clinic_comment,status,owner_id,pet_id,creation_date) VALUES (2, 'My dog gets really nervous', 0, 'PENDING', 1, 1, '2022-01-02 19:30');
 INSERT INTO consultations(id,title, is_clinic_comment,status,owner_id,pet_id,creation_date) VALUES (3, 'My cat does not eat', 0, 'PENDING', 2, 2, '2023-04-11 11:20');

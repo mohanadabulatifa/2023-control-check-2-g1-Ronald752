@@ -52,7 +52,9 @@ public class VisitService {
 
 	@Transactional
 	public Visit save(Visit visit) throws DataAccessException,UnfeasibleDiagnoseException {
-		// TODO Change to implement exercise 8!
+		if(!visit.getDiagnose().getSusceptiblePetTypes().contains(visit.getPet().getType())) {
+            throw new UnfeasibleDiagnoseException();
+        }		
 		return visitRepository.save(visit);
 	}
 
